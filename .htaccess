@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule (.*)_local challenge.php?type=local&challenge=$1 [L]
+    RewriteRule (.*)_api challenge.php?type=api&challenge=$1 [L]
+</IfModule>

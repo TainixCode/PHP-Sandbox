@@ -1,0 +1,20 @@
+{
+    "name": "tainix/tainix-php",
+    "description": "Sandbox PHP pour réaliser les challenges Tainix",
+    "require": {
+        "pestphp/pest": "1.*",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "authors": [
+        {
+            "name": "Arthur Weill pour Tainix",
+            "email": "bonjour@tainix.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {
+            "Challenges\\" : "challenges/",
+            "Tainix\\" : "tainix/"
+        }
+    }
+}
