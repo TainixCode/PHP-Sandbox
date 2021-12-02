@@ -3,12 +3,7 @@ if (!file_exists('./vendor/autoload.php')) {
 	die('Commence par lancer la commande "composer install"');
 }
 
-if (!file_exists('./key.php')) {
-	die('Colle ta key dans le fichier key.php');
-}
-
 require './vendor/autoload.php';
-require './key.php';
 require './constants.php';
 
 use \Tainix\Html;
@@ -17,6 +12,15 @@ use \Tainix\Builder;
 // Sécurité
 if (!isset($_GET[GET_KEY_TYPE]) || !isset($_GET[GET_KEY_CHALLENGE])) {
 	header('Location: ./');
+}
+
+// Vérification présence de la key
+if ($_GET[GET_KEY_TYPE] == TYPE_API) {
+	if (!file_exists('./key.php')) {
+		die('Crée un fichier key.php en partant de key.php.default et colle ta key perso.');
+	}
+
+	require './key.php';
 }
 
 $code = $_GET[GET_KEY_CHALLENGE];

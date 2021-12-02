@@ -3,19 +3,13 @@ if (!file_exists('./vendor/autoload.php')) {
 	die('Commence par lancer la commande "composer install"');
 }
 
-if (!file_exists('./key.php')) {
-	die('Colle ta key dans le fichier key.php');
-}
-
 require './vendor/autoload.php';
-require './key.php';
 require './constants.php';
 
 use \Tainix\Html;
 use \Tainix\Builder;
 
 echo Html::header('TAINIX local PHP - Accueil');
-
 echo Html::title('TAINIX \ Les Challenges disponibles');
 
 $builder = new Builder;
