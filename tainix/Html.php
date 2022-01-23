@@ -67,7 +67,7 @@ final class Html
 	{
 		$title = self::subTitle(strtoupper($type));
 
-		$otherType = ($type == TYPE_API) ? TYPE_LOCAL : TYPE_API;
+		$otherType = ($type == App::TYPE_API) ? App::TYPE_LOCAL : App::TYPE_API;
 
 		$link = self::link(['url' =>  $code . '_' . $otherType, 'name' => 'Version ' . $otherType, 'class' => 'button-outline']);
 
@@ -133,7 +133,7 @@ final class Html
 		FOOTER;
 	}
 
-	public static function debug($var, string $name = '', $class = ''): void
+	public static function debug($var, string $name = '', string $class = ''): void
 	{
 		if ($name != '') {
 			echo '<p class="no-margin">' . $name . '</p>';

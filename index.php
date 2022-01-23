@@ -4,8 +4,8 @@ if (!file_exists('./vendor/autoload.php')) {
 }
 
 require './vendor/autoload.php';
-require './constants.php';
 
+use \Tainix\App;
 use \Tainix\Html;
 use \Tainix\Builder;
 
@@ -14,7 +14,7 @@ echo Html::title('TAINIX \ Les Challenges disponibles');
 
 $builder = new Builder;
 
-if (isset($_POST[POST_KEY_BUILD])) {
+if (isset($_POST[App::POST_KEY_BUILD])) {
 	$nbNewEngines = $builder->build();
 
 	if ($nbNewEngines == 0) {
@@ -24,7 +24,7 @@ if (isset($_POST[POST_KEY_BUILD])) {
 	}
 }
 
-$links = $builder->linksOfEngines(TYPE_LOCAL);
+$links = $builder->linksOfEngines(App::TYPE_LOCAL);
 
 if ($links === []) {
 	echo Html::quote('Aucun challenge pour le moment, clique sur le bouton ci-dessous :', 'danger');
@@ -41,7 +41,7 @@ if ($links === []) {
 }
 
 // TODO : le faire en POST celui la ? Via une petite fonction postButton dans Html :)
-echo Html::postButton(['url' => './', 'name' => POST_KEY_BUILD, 'value' => 'Charger les challenges']);
+echo Html::postButton(['url' => './', 'name' => App::POST_KEY_BUILD, 'value' => 'Charger les challenges']);
 echo '<hr />';
 echo Html::link(['url' => 'https://tainix.fr', 'name' => 'tainix.fr &rarr;', 'blank' => true, 'class' => 'button-outline']);
 

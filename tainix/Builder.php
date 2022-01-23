@@ -1,6 +1,7 @@
 <?php
 namespace Tainix;
 
+use Tainix\App;
 use GuzzleHttp\Client;
 use Tainix\DataFormater;
 
@@ -52,7 +53,7 @@ final class Builder
 				// 2. Création du fichier du challenge, réponse via API
 				$this->writeFile(
 					$code,
-					strtolower($code) . SUFFIX_API_FILE,
+					strtolower($code) . App::SUFFIX_API_FILE,
 					self::LOCAL_CHALLENGES_DIR . $code . '/',
 					'contentChallengeFile'
 				);
@@ -60,7 +61,7 @@ final class Builder
 				// 3. Création du fichier Sample, à traiter en local
 				$this->writeFile(
 					$code,
-					strtolower($code) . SUFFIX_LOCAL_FILE,
+					strtolower($code) . App::SUFFIX_LOCAL_FILE,
 					self::LOCAL_CHALLENGES_DIR . $code . '/',
 					'contentSampleFile'
 				);
@@ -68,7 +69,7 @@ final class Builder
 				// 4. Création du fichier de test Pest
 				$this->writeFile(
 					$code,
-					ucfirst(strtolower($code)) . SUFFIX_TEST_PEST_FILE,
+					ucfirst(strtolower($code)) . App::SUFFIX_TEST_PEST_FILE,
 					self::LOCAL_TEST_PEST_DIR,
 					'contentEmptyFile'
 				);
@@ -76,7 +77,7 @@ final class Builder
 				// 5. Création du fichier PHP Unit
 				$this->writeFile(
 					$code,
-					ucfirst(strtolower($code)) . SUFFIX_TEST_PHPUNIT_FILE,
+					ucfirst(strtolower($code)) . App::SUFFIX_TEST_PHPUNIT_FILE,
 					self::LOCAL_TEST_PHPUNIT_DIR,
 					'contentPHPUnitFile'
 				);
