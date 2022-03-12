@@ -2,6 +2,7 @@
     "name": "tainix/tainix-php",
     "description": "Sandbox PHP pour réaliser les challenges Tainix",
     "require": {
+        "php": ">=7.3",
         "pestphp/pest": "1.*",
         "guzzlehttp/guzzle": "^7.0"
     },

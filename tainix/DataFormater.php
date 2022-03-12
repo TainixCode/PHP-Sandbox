@@ -3,6 +3,9 @@ namespace Tainix;
 
 final class DataFormater
 {
+	/**
+	 * @param array<string, mixed> $data
+	 */
 	public static function dataToCode(array $data): string
 	{
 		$str = '';
@@ -10,7 +13,7 @@ final class DataFormater
 		foreach ($data as $name => $value) {
 			$str .= '$' . $name . ' = ';
 			if (is_array($value)) {
-				$str .= '[' . implode(', ', array_map(['self', 'phpFormatValue'], $value)) . ']';
+				$str .= '[' . implode(', ', array_map([__CLASS__, 'phpFormatValue'], $value)) . ']';
 			} else {
 				$str .= self::phpFormatValue($value);
 			}
@@ -21,6 +24,9 @@ final class DataFormater
 		return $str;
 	}
 
+	/**
+	 * @param array<string, mixed> $data
+	 */
 	public static function dataToDebug(array $data): string
 	{
 		$str = '';
@@ -32,6 +38,9 @@ final class DataFormater
 		return $str;
 	}
 
+	/**
+	 * @param array<string, mixed> $data
+	 */
 	public static function dataFromData(array $data): string
 	{
 		$str = '';
@@ -43,7 +52,9 @@ final class DataFormater
 		return $str;
 	}
 
-
+	/**
+	 * @param int|string $value
+	 */
 	private static function phpFormatValue($value): string
 	{
 		if (is_string($value)) {

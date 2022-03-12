@@ -1,5 +1,6 @@
 vendor/
 challenges/
-tests/
-units/
+pest/
+phpunit/
 key.php
+.phpunit.result.cache

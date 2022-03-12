@@ -17,7 +17,10 @@ final class Game
 		$this->key = $key;
 		$this->codeEngine = $codeEngine;
 	}
-
+	
+	/**
+	 * @return array<string, mixed>
+	 */
 	public function input(): array
 	{
 		$data = $this->request('api/games/start/' . $this->key . '/' . $this->codeEngine);
@@ -27,13 +30,24 @@ final class Game
 		return $data['input'];
 	}
 
+	/**
+	 * @param array<string, mixed> $dataPlayer
+	 */
 	public function output(array $dataPlayer): void
 	{
 		if (!isset($dataPlayer['data'])) {
 			$this->errors(['Votre tableau de retour doit contenir une cle "data"']);
+			return;
 		}
 
-		$dataPlayer = base64_encode(json_encode($dataPlayer));
+		$dataPlayer = json_encode($dataPlayer);
+
+		if ($dataPlayer === false) {
+			$this->errors(['Erreur dans la structure des données.']);
+			return;
+		}
+
+		$dataPlayer = base64_encode($dataPlayer);
 		
 		$data = $this->request('api/games/response/' . $this->token . '/' . $dataPlayer);
 
@@ -43,6 +57,9 @@ final class Game
 		echo Html::quote('Le Token de ta Game :</b> <a href="' . self::BASE_URL . 'games/story/' . $this->token . '" target="_blank">' . $this->token . '</a>');
 	}
 
+	/**
+	 * @return array<string, mixed>
+	 */
 	private function request(string $url): array
 	{
 		$client = new Client(['verify' => false]);
@@ -62,12 +79,15 @@ final class Game
 		return $data;
 	}
 
+	/**
+	 * @param string|string[] $errors
+	 */
 	private function errors($errors): void
 	{
 		foreach ((array) $errors as $error) {
 			echo '<p><b>Erreur : </b> ' . $error . '</p>';
 		}
 
-		exit();
+		return;
 	}
 }

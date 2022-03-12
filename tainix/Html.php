@@ -1,13 +1,11 @@
 <?php
 namespace Tainix;
 
-use Tainix\DataFormater;
-
 final class Html
 {
 	private const URL_TAINIX_CHALLENGE = 'https://tainix.fr/engines/code/';
 
-	public static function header($name): string
+	public static function header(string $name): string
 	{
 		return <<< HEADER
 		<!DOCTYPE html>
@@ -79,6 +77,9 @@ final class Html
 		TITLE;
 	}
 
+	/**
+	 * @param array<string, string|bool> $link
+	 */
 	public static function link(array $link): string
 	{
 		$url = $link['url'];
@@ -93,6 +94,9 @@ final class Html
 		LINK;
 	}
 
+	/**
+	 * @param array<string, string> $link
+	 */
 	public static function postButton(array $link): string
 	{
 		$url = $link['url'];
@@ -133,6 +137,9 @@ final class Html
 		FOOTER;
 	}
 
+	/**
+	 * @param mixed $var
+	 */
 	public static function debug($var, string $name = '', string $class = ''): void
 	{
 		if ($name != '') {

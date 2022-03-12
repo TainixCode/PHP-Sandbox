@@ -10,8 +10,8 @@ final class Builder
 	private const TAINIX_URL_ENGINES_LIST = 'https://tainix.fr/api/engines/list';
 	private const TAINIX_URL_ENGINE_SAMPLE = 'https://tainix.fr/api/engines/sample/';
 	private const LOCAL_CHALLENGES_DIR = './challenges/';
-	private const LOCAL_TEST_PEST_DIR = './tests/';
-	private const LOCAL_TEST_PHPUNIT_DIR = './units/';
+	private const LOCAL_TEST_PEST_DIR = './pest/';
+	private const LOCAL_TEST_PHPUNIT_DIR = './phpunit/';
 	private const LOCAL_CHALLENGES_JSON = 'challenges.json';
 
 	private Client $client;
@@ -38,6 +38,11 @@ final class Builder
 
 		// On met tout dans un fichier
 		$challengeFileJson = fopen(self::LOCAL_CHALLENGES_DIR . self::LOCAL_CHALLENGES_JSON, 'w+');
+
+		if ($challengeFileJson === false) {
+			return 0;
+		}
+
 		fwrite($challengeFileJson, $request->getBody());
 		fclose($challengeFileJson);
 
@@ -67,20 +72,28 @@ final class Builder
 				);
 
 				// 4. Création du fichier de test Pest
-				$this->writeFile(
-					$code,
-					ucfirst(strtolower($code)) . App::SUFFIX_TEST_PEST_FILE,
-					self::LOCAL_TEST_PEST_DIR,
-					'contentEmptyFile'
-				);
+					// 4.0 Création du dossier
+					mkdir(self::LOCAL_TEST_PEST_DIR . $code);
+
+					// 4.1 Création du fichier
+					$this->writeFile(
+						$code,
+						ucfirst(strtolower($code)) . App::SUFFIX_TEST_PEST_FILE,
+						self::LOCAL_TEST_PEST_DIR . $code . '/',
+						'contentEmptyFile'
+					);
 
 				// 5. Création du fichier PHP Unit
-				$this->writeFile(
-					$code,
-					ucfirst(strtolower($code)) . App::SUFFIX_TEST_PHPUNIT_FILE,
-					self::LOCAL_TEST_PHPUNIT_DIR,
-					'contentPHPUnitFile'
-				);
+					// 5.0 Création du dossier
+					mkdir(self::LOCAL_TEST_PHPUNIT_DIR . $code);
+
+					// 5.1 Création du fichier
+					$this->writeFile(
+						$code,
+						ucfirst(strtolower($code)) . App::SUFFIX_TEST_PHPUNIT_FILE,
+						self::LOCAL_TEST_PHPUNIT_DIR . $code . '/',
+						'contentPHPUnitFile'
+					);
 
 				$nbNewEngines++;
 			}
@@ -107,12 +120,20 @@ final class Builder
 		}
 
 		$file = fopen($dir . $fileName, 'w+');
+
+		if ($file === false) {
+			return false;
+		}
+
 		fwrite($file, $this->$contentFunction($code));
 		fclose($file);
 
 		return true;
 	}
 
+	/**
+	 * @return array<int, array<string, mixed>>
+	 */
 	public function linksOfEngines(string $type): array
 	{
 		if (!file_exists(self::LOCAL_CHALLENGES_DIR . self::LOCAL_CHALLENGES_JSON)) {
@@ -120,6 +141,11 @@ final class Builder
 		}
 
 		$challengeFileJson = file_get_contents(self::LOCAL_CHALLENGES_DIR . self::LOCAL_CHALLENGES_JSON);
+		
+		if ($challengeFileJson === false) {
+			return [];
+		}
+		
 		$enginesList = json_decode($challengeFileJson, true);
 
 		$links = [];

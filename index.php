@@ -40,7 +40,6 @@ if ($links === []) {
 	echo '<br />';
 }
 
-// TODO : le faire en POST celui la ? Via une petite fonction postButton dans Html :)
 echo Html::postButton(['url' => './', 'name' => App::POST_KEY_BUILD, 'value' => 'Charger les challenges']);
 echo '<hr />';
 echo Html::link(['url' => 'https://tainix.fr', 'name' => 'tainix.fr &rarr;', 'blank' => true, 'class' => 'button-outline']);
