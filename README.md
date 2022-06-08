@@ -1,4 +1,6 @@
 # PHP-Sandbox
-Sandbox pour réaliser les challenges Tainix en local.
+Corrigés des challenges, avec tests unitaires réalisés avec PHPUnit.
 
-[Documentation sur le site Tainix.fr](https://tainix.fr/changelog/Sandbox-PHP-pour-realiser-les-challenges).
+### Challenges corrigés
+[WALL E V1](https://tainix.fr/changelog/Sandbox-PHP-pour-realiser-les-challenges).
+[WALL E V2 en appliquant le S de SOLID](https://tainix.fr/changelog/Sandbox-PHP-pour-realiser-les-challenges).
