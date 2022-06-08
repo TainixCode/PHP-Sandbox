@@ -50,7 +50,7 @@ final class Builder
 
 		foreach ($enginesList['engines'] as $key => $code) {
 
-			if (!is_dir(self::LOCAL_CHALLENGES_DIR . $code)) {
+			if (! is_dir(self::LOCAL_CHALLENGES_DIR . $code)) {
 
 				// 1. Création du dossier
 				mkdir(self::LOCAL_CHALLENGES_DIR . $code);
@@ -73,7 +73,9 @@ final class Builder
 
 				// 4. Création du fichier de test Pest
 					// 4.0 Création du dossier
-					mkdir(self::LOCAL_TEST_PEST_DIR . $code);
+					if (! is_dir(self::LOCAL_TEST_PEST_DIR . $code)) {
+						mkdir(self::LOCAL_TEST_PEST_DIR . $code);
+					}
 
 					// 4.1 Création du fichier
 					$this->writeFile(
@@ -85,7 +87,9 @@ final class Builder
 
 				// 5. Création du fichier PHP Unit
 					// 5.0 Création du dossier
-					mkdir(self::LOCAL_TEST_PHPUNIT_DIR . $code);
+					if (! is_dir(self::LOCAL_TEST_PHPUNIT_DIR . $code)) {
+						mkdir(self::LOCAL_TEST_PHPUNIT_DIR . $code);
+					}
 
 					// 5.1 Création du fichier
 					$this->writeFile(
@@ -171,7 +175,7 @@ final class Builder
 
 		$out .= '// INITIALISATION ---------------------' . "\n";
 		$out .= '$game = new Game(' . "\n";
-		$out .= '	TAINIX_KEY,' . "\n";
+		$out .= '	$_ENV[\'TAINIX_KEY\'],' . "\n";
 		$out .= '	basename(__DIR__)' . "\n";
 		$out .= ');' . "\n\n";
 

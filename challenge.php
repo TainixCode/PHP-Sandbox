@@ -14,12 +14,16 @@ if (!isset($_GET[App::GET_KEY_TYPE]) || !isset($_GET[App::GET_KEY_CHALLENGE])) {
 }
 
 // Vérification présence de la key
+$keyIsConfigured = true;
 if ($_GET[App::GET_KEY_TYPE] == App::TYPE_API) {
-	if (!file_exists('./key.php')) {
-		die('Crée un fichier key.php en partant de key.php.default et colle ta key perso.');
-	}
+	$dotenv = Dotenv\Dotenv::createMutable(__DIR__);
+	$dotenv->load();
 
-	require './key.php';
+	try {
+		$dotenv->required('TAINIX_KEY');
+	} catch (Exception $e) {
+		$keyIsConfigured = false;
+	}
 }
 
 $code = $_GET[App::GET_KEY_CHALLENGE];
@@ -40,12 +44,16 @@ $suffixes = [
 echo Html::header('Tainix local PHP - ' . $code);
 echo Html::challengeTitle($code);
 
-if (is_dir($challengeDirectory)) {
-	echo Html::challengeSubTitle($code, $type);
-	echo Html::quote($quotes[$type]);
-	require $challengeDirectory . '/' . $challengeFile . $suffixes[$type];
+if (! $keyIsConfigured) {
+	echo Html::quote('Il faut configurer TAINIX_KEY dans le fichier .env à la racine');
 } else {
-	echo Html::quote('Ce Challenge ne semble pas encore chargé. Retourne à l\'accueil et (re)charge les challenges.', 'danger');
+	if (is_dir($challengeDirectory)) {
+		echo Html::challengeSubTitle($code, $type);
+		echo Html::quote($quotes[$type]);
+		require $challengeDirectory . '/' . $challengeFile . $suffixes[$type];
+	} else {
+		echo Html::quote('Ce Challenge ne semble pas encore chargé. Retourne à l\'accueil et (re)charge les challenges.', 'danger');
+	}
 }
 
 echo Html::link(['url' => './', 'name' => '&larr; Liste des challenges', 'class' => 'button-outline']);

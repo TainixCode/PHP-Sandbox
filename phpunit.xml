@@ -11,5 +11,8 @@
         <testsuite name="Pest">
             <directory suffix="Test.php">./pest</directory>
         </testsuite>
+        <testsuite name="Tainix">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
     </testsuites>
 </phpunit>

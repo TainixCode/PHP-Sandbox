@@ -1,3 +1,0 @@
-<?php
-// Colle ici ta KEY perso
-define('TAINIX_KEY', 'xxxxxxxxxxxx');
