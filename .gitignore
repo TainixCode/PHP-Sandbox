@@ -1,7 +1,7 @@
 vendor/
-challenges/
-pest/
-phpunit/
-key.php
 .phpunit.result.cache
 .env
+pest/
+*_local.php
+*_api.php
+*.default
