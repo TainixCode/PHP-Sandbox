@@ -22,6 +22,8 @@ final class PFCGame
 		if ($play === self::CISEAUX) {
 			return self::PIERRE;
 		}
+
+		return '';
 	}
 
 	public function party(string $plays): string
