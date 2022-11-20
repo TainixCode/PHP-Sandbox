@@ -13,6 +13,10 @@ final class PizzaioloFactory
             throw new \Exception('Ce Pizzaiolo n\'est pas paramétré');
         }
 
-        return new $classPizzaiolo;
+        /**
+         * @var Pizzaiolo $pizzaiolo
+         */
+        $pizzaiolo = new $classPizzaiolo;
+        return $pizzaiolo;
     }
 }

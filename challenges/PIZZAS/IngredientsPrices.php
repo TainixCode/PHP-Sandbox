@@ -24,9 +24,15 @@ final class IngredientsPrices
      * ----------------------------------------------
      */
 
+    /**
+     * @var array<string, int> $prices
+     */
     private array $prices;
 
-    public function setPrices(array $informations)
+    /**
+     * @param array<int, string> $informations
+     */
+    public function setPrices(array $informations): void
     {
         $this->prices = [];
         
@@ -37,6 +43,10 @@ final class IngredientsPrices
         }
     }
 
+    /**
+     * @param array<int, string> $ingredients
+     * @return array<int, int>
+     */
     public function getPricesForIngredients(array $ingredients): array
     {
         return array_map([$this, 'getPriceByName'], $ingredients);

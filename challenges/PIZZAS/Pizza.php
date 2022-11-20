@@ -5,6 +5,9 @@ namespace Challenges\PIZZAS;
 
 final class Pizza
 {
+    /**
+     * @var array<int, string> $ingredients
+     */
     private array $ingredients;
 
     private Pizzaiolo $pizzaiolo;
