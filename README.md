@@ -14,3 +14,5 @@ Corrigés des challenges, avec tests unitaires réalisés avec PHPUnit ou Pest P
 
 ### Challenges corrigés Pest
 [Découverte de Pest #1 : Collectionneur de figurines](https://tainix.fr/code/Tests-unitaires-en-PHP-1-prendre-en-main-Pest).
+
+[Try/Catch et Exception : Survivor 2](https://tainix.fr/code/Un-try-catch-une-exception-personnalisee-et-des-tests-unitaires).
