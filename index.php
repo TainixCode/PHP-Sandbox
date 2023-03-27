@@ -1,5 +1,5 @@
 <?php
-if (!file_exists('./vendor/autoload.php')) {
+if (! file_exists('./vendor/autoload.php')) {
 	die('Commence par lancer la commande "composer install"');
 }
 
@@ -8,6 +8,9 @@ require './vendor/autoload.php';
 use \Tainix\App;
 use \Tainix\Html;
 use \Tainix\Builder;
+
+$dotenv = Dotenv\Dotenv::createMutable(__DIR__);
+$dotenv->load();
 
 echo Html::header('TAINIX local PHP - Accueil');
 echo Html::title('TAINIX \ Les Challenges disponibles');

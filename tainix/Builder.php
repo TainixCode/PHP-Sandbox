@@ -2,6 +2,7 @@
 namespace Tainix;
 
 use Tainix\App;
+use Dotenv\Dotenv;
 use GuzzleHttp\Client;
 use Tainix\DataFormater;
 
@@ -28,7 +29,8 @@ final class Builder
 		$this->writeDir(self::LOCAL_TEST_PEST_DIR);
 		$this->writeDir(self::LOCAL_TEST_PHPUNIT_DIR);
 
-		$request = $this->client->request('GET', self::TAINIX_URL_ENGINES_LIST);
+		$urlForEngines = self::TAINIX_URL_ENGINES_LIST . '/' . ($_ENV['TAINIX_KEY'] ?? '');
+		$request = $this->client->request('GET', $urlForEngines);
 
 		$nbNewEngines = 0;
 
@@ -202,7 +204,8 @@ final class Builder
 
 		$out .= 'use Tainix\Html;' . "\n\n";
 
-		$request = $this->client->request('GET', self::TAINIX_URL_ENGINE_SAMPLE . $code);
+		$urlForSample = self::TAINIX_URL_ENGINE_SAMPLE . $code . '/' . ($_ENV['TAINIX_KEY'] ?? '');
+		$request = $this->client->request('GET', $urlForSample);
 
 		if ($request->getStatusCode() != 200) {
 			return $out . '// Erreur...';
