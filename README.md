@@ -12,10 +12,14 @@ Corrigés des challenges, avec tests unitaires réalisés avec PHPUnit ou Pest P
 
 [Expérimentation des enums : TRAIN_1](https://tainix.fr/code/Utilisation-des-enums-avec-PHP-8-1).
 
+[Design Pattern en PHP : Singleton et Factory](https://tainix.fr/code/Design-Pattern-en-PHP-Singleton-et-Factory).
+
 ### Challenges corrigés Pest
 [Découverte de Pest #1 : Collectionneur de figurines](https://tainix.fr/code/Tests-unitaires-en-PHP-1-prendre-en-main-Pest).
 
 [Try/Catch et Exception : Survivor 2](https://tainix.fr/code/Un-try-catch-une-exception-personnalisee-et-des-tests-unitaires).
+
+[Design Pattern en PHP : Factory](https://tainix.fr/code/Design-Pattern-en-PHP-Factory).
 
 ### Autres
 [Interface ou héritage avec méthode abstraite ?](https://tainix.fr/code/POO-interfaces-ou-methodes-abstraites).
