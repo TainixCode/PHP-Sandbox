@@ -14,6 +14,8 @@ Corrigés des challenges, avec tests unitaires réalisés avec PHPUnit ou Pest P
 
 [Design Pattern en PHP : Singleton et Factory](https://tainix.fr/code/Design-Pattern-en-PHP-Singleton-et-Factory).
 
+[Expérimentation des enums #2](https://tainix.fr/code/POO-en-PHP-enums-et-interfaces)
+
 ### Challenges corrigés Pest
 [Découverte de Pest #1 : Collectionneur de figurines](https://tainix.fr/code/Tests-unitaires-en-PHP-1-prendre-en-main-Pest).
 
