@@ -21,5 +21,7 @@ Corrigés des challenges, avec tests unitaires réalisés avec PHPUnit ou Pest P
 
 [Design Pattern en PHP : Factory](https://tainix.fr/code/Design-Pattern-en-PHP-Factory).
 
+[Design Pattern en PHP : Strategy](https://tainix.fr/code/POO-en-PHP-design-Pattern-Strategy).
+
 ### Autres
 [Interface ou héritage avec méthode abstraite ?](https://tainix.fr/code/POO-interfaces-ou-methodes-abstraites).
