@@ -5,7 +5,8 @@
         "php": ">=7.4",
         "pestphp/pest": "1.*",
         "guzzlehttp/guzzle": "^7.0",
-        "vlucas/phpdotenv": "^5.4"
+        "vlucas/phpdotenv": "^5.4",
+        "illuminate/collections": "^10.43"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.4"
@@ -22,7 +23,13 @@
     "autoload": {
         "psr-4" : {
             "Challenges\\" : "challenges/",
-            "Tainix\\" : "tainix/"
+            "Tainix\\" : "tainix/",
+            "Pest\\" : "pest/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
         }
     }
 }

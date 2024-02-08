@@ -25,5 +25,7 @@ Corrigés des challenges, avec tests unitaires réalisés avec PHPUnit ou Pest P
 
 [Design Pattern en PHP : Strategy](https://tainix.fr/code/POO-en-PHP-design-Pattern-Strategy).
 
+[Utilisation des Collections sur des objets](https://tainix.fr/code/PHP-Utiliser-les-Collections-sur-des-objets).
+
 ### Autres
 [Interface ou héritage avec méthode abstraite ?](https://tainix.fr/code/POO-interfaces-ou-methodes-abstraites).
